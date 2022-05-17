@@ -18,29 +18,26 @@ func Map[A any, B any](aa []A, mapper func(a A) B) []B {
 	return mapped
 }
 
-// DropWhile
-// https://docs.python.org/3/library/itertools.html#itertools.dropwhile
-func DropWhile[A any](aa []A, pred func(a A) bool) []A {
-	i := 0
+func findIndex[A any](aa []A, pred func(a A) bool) (i int) {
 	for ; i < len(aa); i++ {
 		if !pred(aa[i]) {
 			break
 		}
 	}
+	return i
+}
 
+// DropWhile
+// https://docs.python.org/3/library/itertools.html#itertools.dropwhile
+func DropWhile[A any](aa []A, pred func(a A) bool) []A {
+	i := findIndex(aa, pred)
 	return aa[i:]
 }
 
 // TakeWhile
 // https://docs.python.org/3/library/itertools.html#itertools.takewhile
 func TakeWhile[A any](aa []A, pred func(a A) bool) []A {
-	i := 0
-	for ; i < len(aa); i++ {
-		if !pred(aa[i]) {
-			break
-		}
-	}
-
+	i := findIndex(aa, pred)
 	return aa[:i]
 }
 
