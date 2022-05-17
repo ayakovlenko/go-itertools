@@ -43,3 +43,19 @@ func TakeWhile[A any](aa []A, pred func(a A) bool) []A {
 
 	return aa[:i]
 }
+
+// Pairwise
+// https://docs.python.org/3/library/itertools.html#itertools.pairwise
+func Pairwise[A any](aa []A) [][2]A {
+	pairs := [][2]A{}
+
+	if len(aa) < 2 {
+		return pairs
+	}
+
+	for i := 0; i < len(aa)-1; i++ {
+		pairs = append(pairs, [2]A{aa[i], aa[i+1]})
+	}
+
+	return pairs
+}

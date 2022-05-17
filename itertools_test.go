@@ -106,3 +106,22 @@ func TestTakeWhile(t *testing.T) {
 		assert.Equal(t, want, have)
 	})
 }
+
+func TestPairwise(t *testing.T) {
+
+	t.Run("Pairwise 1", func(t *testing.T) {
+		xs := []string{"A", "B", "C", "D", "E", "F", "G"}
+
+		want := [][2]string{
+			{"A", "B"},
+			{"B", "C"},
+			{"C", "D"},
+			{"D", "E"},
+			{"E", "F"},
+			{"F", "G"},
+		}
+		have := Pairwise(xs)
+
+		assert.Equal(t, want, have)
+	})
+}
