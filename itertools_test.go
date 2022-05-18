@@ -125,3 +125,20 @@ func TestPairwise(t *testing.T) {
 		assert.Equal(t, want, have)
 	})
 }
+
+func TestGroupBy(t *testing.T) {
+
+	t.Run("GroupBy 1", func(t *testing.T) {
+		names := []string{"Anna", "Arnold", "Kim"}
+
+		want := map[string][]string{
+			"A": {"Anna", "Arnold"},
+			"K": {"Kim"},
+		}
+		have := GroupBy(names, func(name string) string {
+			return name[:1]
+		})
+
+		assert.Equal(t, want, have)
+	})
+}

@@ -56,3 +56,18 @@ func Pairwise[A any](aa []A) [][2]A {
 
 	return pairs
 }
+
+// GroupBy
+// https://deno.land/std@0.139.0/collections#groupby
+func GroupBy[A any, B comparable](aa []A, grouper func(a A) B) map[B][]A {
+	grouped := map[B][]A{}
+	for _, a := range aa {
+		k := grouper(a)
+		if group, ok := grouped[k]; ok {
+			grouped[k] = append(group, a)
+		} else {
+			grouped[k] = []A{a}
+		}
+	}
+	return grouped
+}
