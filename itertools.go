@@ -58,7 +58,7 @@ func Pairwise[A any](aa []A) [][2]A {
 }
 
 // GroupBy
-// https://deno.land/std@0.139.0/collections#groupby
+// https://deno.land/std@0.140.0/collections#groupby
 func GroupBy[A any, B comparable](aa []A, grouper func(a A) B) map[B][]A {
 	grouped := map[B][]A{}
 	for _, a := range aa {
