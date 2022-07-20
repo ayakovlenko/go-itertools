@@ -1,3 +1,6 @@
-https://docs.python.org/3.12/library/itertools.html
+# itertools for Go
 
-https://deno.land/std@0.139.0/collections
+Inspired by:
+
+- https://docs.python.org/3.12/library/itertools.html
+- https://deno.land/std@0.148.0/collections
